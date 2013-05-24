@@ -135,7 +135,7 @@
         if (pos.x > ($(document).width() - 2 * $("#flotTip").width() - this.tooltipOptions.shifts.x)) {
                 pos.x -= ($("#flotTip").width() + 2 * this.tooltipOptions.shifts.x);
         }
-        if (pos.y > ($(document).height() - 2 * $("#flotTip").width() - this.tooltipOptions.shifts.y)) {
+        if (pos.y > ($(document).height() - 2 * $("#flotTip").height() - this.tooltipOptions.shifts.y)) {
             pos.y -= ($("#flotTip").height() + 2 * this.tooltipOptions.shifts.y);
         }
         this.tipPosition.x = pos.x;
