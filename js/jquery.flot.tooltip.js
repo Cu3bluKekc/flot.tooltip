@@ -65,16 +65,16 @@
 
             // bind event
             $( plot.getPlaceholder() ).bind("plothover", function (event, pos, item) {
-                that.updateTooltipPosition({ x: pos.pageX, y: pos.pageY });
-
+                
                 if (item) {
                     var tipText;
 
                     // convert tooltip content template to real tipText
                     tipText = that.stringFormat(that.tooltipOptions.content, item);
 
-                    $tip.html( tipText )
-                        .css({
+                    $tip.html( tipText );
+                    that.updateTooltipPosition({ x: pos.pageX, y: pos.pageY });
+                    $tip.css({
                             left: that.tipPosition.x + that.tooltipOptions.shifts.x,
                             top: that.tipPosition.y + that.tooltipOptions.shifts.y
                         })
@@ -134,6 +134,9 @@
     FlotTooltip.prototype.updateTooltipPosition = function(pos) {
         if (pos.x > ($(document).width() - 2 * $("#flotTip").width() - this.tooltipOptions.shifts.x)) {
                 pos.x -= ($("#flotTip").width() + 2 * this.tooltipOptions.shifts.x);
+        }
+        if (pos.y > ($(document).height() - 2 * $("#flotTip").width() - this.tooltipOptions.shifts.y)) {
+            pos.y -= ($("#flotTip").height() + 2 * this.tooltipOptions.shifts.y);
         }
         this.tipPosition.x = pos.x;
         this.tipPosition.y = pos.y;
